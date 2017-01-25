@@ -3,12 +3,21 @@ import ConfigParser
 from nsxramlclient.client import NsxClient
 from pynsxv.library.nsx_dfw import *
 import json
+from sys import argv
+import csv
+
+script, filename = argv
 
 nsxraml_file = 'raml/nsxraml-master/nsxvapi.raml'
 nsxmanager = '10.202.10.101'
 nsx_username = 'admin'
 nsx_password = 'opendaylight123'
 
+target = open( filename, 'w' )
+target.truncate()
+csv_file = csv.writer(target)
+
+print "CSV: Opened file", filename
 client_session = NsxClient(nsxraml_file, nsxmanager, nsx_username, 
                            nsx_password, debug=False, fail_mode='raise')
 '''
@@ -44,13 +53,37 @@ print rules[0][9]
 # rules[0] = l2 rules, rules[1] = l3 rules, rules[2] = l3redirect rules
 #print rules[1]
 
+# CSV Header
+csv_file.writerow( ( "Order", "Rule ID", "Name", "Action", "Dir", "Source", "Source Contents", "Destination", "Destination Contents", "Service", "Service Contents", "Applied To" ) )
+print "CSV: Added CSV header row.."
 
 # Iterate through each Layer 3 Section
 for section in sections[2]:
+	
 	name = section[0]
 	section_id = section[1]
-	print "Section:", name, str(section_id)
+
+	print name,section_id
+	
+	csv_section = ( "Section:", name, section_id )
+	csv_file.writerow(csv_section)
+	print "CSV: Added row for Section",name,section_id
+
+	i = 0
 	for rule in rules:
+		i = i + 1
+		this_rule = dict()
+		this_rule['order'] = i
+		this_rule['rule_id'] = rule[0]
+		this_rule['name'] = rule[1]
+		this_rule['src'] = rule[2]
+		this_rule['dst'] = rule[3]
+		this_rule['svc'] = rule[4]
+		this_rule['action'] = rule[5]
+		this_rule['dir'] = rule[6]
+		this_rule['applied_to'] = rule[8]
+		this_rule['section_id'] = rule[9]
+		
 		'''
 		rule[0] = ruleId
 		rule[1] = name
@@ -62,8 +95,14 @@ for section in sections[2]:
 		rule[7] = ?
 		rule[8] = appliedTo
 		rule[9] = sectionId
-		'''
-		if rule[9] == section_id:
-			print "Rule Section:", rule[9]
 
-#dfw_rule_list_helper(client_session, section_rules)
+		CSV Header: Order,Rule ID,Name,Action,Dir,Source,Source Contents,Destination,Destination Contents,Service,Service Contents,Applied To
+		'''
+		if this_rule['section_id'] == section_id:
+			csv_rule = ( this_rule['order'], this_rule['rule_id'], this_rule['name'], this_rule['action'], this_rule['dir'], this_rule['src'], "source\rcontents", this_rule['dst'], "destination\rcontents", this_rule['svc'], "service\rcontents", this_rule['applied_to'] )
+			csv_file.writerow(csv_rule)
+			print "CSV: Added row for", this_rule['name'], this_rule['rule_id']
+
+print "CSV: Closing file.."
+target.close()
+print "CSV: File closed."
