@@ -29,12 +29,12 @@ Order,Rule ID,Name,Action,Dir,Source,Source Contents,Destination,Destination Con
 21,1009,Block-Prod->Dev,deny,inout,TenA_Prod_Group,Empty group.,TenA_Dev_Group,Empty group.,any,,"TenA_Dev_Group, TenA_Prod_Group"
 22,1047,Default-Permit,allow,inout,any,,any,,any,,"TenA_Dev_Group, TenA_Prod_Group"
 "Section:TenB Compute Cluster Rules, ID: 1005"
-23,1020,Outside-MGT-RDP,allow,inout,MGT_IP-SET,"172.20.0.0/15, 10.202.0.0/16",TenB_Outside_Group,Empty group.,any,,DISTRIBUTED_FIREWALL
+23,1020,Outside-MGT-RDP,allow,inout,MGT_IP-SET,"10.202.0.0/16, 172.20.0.0/15",TenB_Outside_Group,Empty group.,any,,DISTRIBUTED_FIREWALL
 24,1013, Block Dev->Prod,deny,inout,TenB_Dev_IP-SET,10.202.42.0/24,TenB_Prod_IP-SET,10.202.41.0/24,any,,DISTRIBUTED_FIREWALL
 25,1012,Block Prod->Dev,deny,inout,TenB_Prod_IP-SET,10.202.41.0/24,TenB_Dev_IP-SET,10.202.42.0/24,any,,DISTRIBUTED_FIREWALL
 "Section:Inter-Tenant Rules, ID: 1004"
 26,1017,Block-TenA-TenB-Traffic,deny,inout,TenA_Security_Group,Empty group.,TenB_Security_Group,"fe80::a5e1:d066:a719:5282, 10.202.42.10, 10.202.44.10, fe80::c9d2:d8b7:3663:4f95",any,,DISTRIBUTED_FIREWALL
-27,1014,Block-TenB-TenA Traffic,deny,inout,TenB_Security_Group,"fe80::a5e1:d066:a719:5282, 10.202.42.10, 10.202.44.10, fe80::c9d2:d8b7:3663:4f95",TenA_Security_Group,Empty group.,any,,DISTRIBUTED_FIREWALL
+27,1014,Block-TenB-TenA Traffic,deny,inout,TenB_Security_Group,"10.202.44.10, fe80::c9d2:d8b7:3663:4f95, fe80::a5e1:d066:a719:5282, 10.202.42.10",TenA_Security_Group,Empty group.,any,,DISTRIBUTED_FIREWALL
 "Section:test :: NSX Service Composer - Firewall, ID: 1026"
 28,1066,test,allow,inout,Palo-Test-Client,Empty group.,any,,any,,DISTRIBUTED_FIREWALL
 "Section:Default Section Layer3, ID: 1002"

@@ -1,5 +1,7 @@
 Installation
 (Reference: https://github.com/vmware/pynsxv#dependencies)
+
+
 Mac
 -----
 xcode-select --install
@@ -24,3 +26,10 @@ apt-get update && apt-get upgrade -y
 apt-get install libssl-dev libffi-dev libxml2-dev libxslt-dev python-dev zlib1g-dev python-pip -y
 
 sudo pip install pynsxv
+
+
+
+
+Mac for script using Requests (HTTP for Humans)
+--------
+pip install requests

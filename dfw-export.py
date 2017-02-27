@@ -13,11 +13,6 @@ if len(argv) == 5:
 else:
 	print 'Syntax: dfw-export.py [target_file_name] [nsx_manager_ip_or_hostname] [nsx_username] [nsx_password]'
 	sys.exit()
-'''
-nsx_manager = '10.202.10.101'
-nsx_username = 'admin'
-nsx_password = 'opendaylight123'
-'''
 # Set HTTP parameters for REST API call
 # If you want to verify SSL, set nsx.verify = '/path/to/cert.pem'
 nsx = requests.Session()
