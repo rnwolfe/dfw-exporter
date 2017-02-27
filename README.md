@@ -37,7 +37,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 Of course, after you do this, you will need to use the same hostname/IP as is present in the CN of the server certificate.
 
-# Example
+# Simple Example
 ### Example of CSV
 An example of the CSV out can be retrieved from [example.csv](example.csv).
 ### Example of Diff
@@ -55,6 +55,7 @@ An example of the CSV out can be retrieved from [example.csv](example.csv).
  "Section:TenB Compute Cluster Rules, ID: 1005"
  23,1020,Outside-MGT-RDP,allow,inout,MGT_IP-SET,"10.202.0.0/16, 172.20.0.0/15",TenB_Outside_Group,Empty group.,any,,DISTRIBUTED_FIREWALL
  ```
- #### Visual Diff
  
- ![Diff using GitHub Desktop](http://imgur.com/Mx65ixb)
+ #### Visual Diff
+
+ ![](http://imgur.com/Mx65ixb.jpg)
