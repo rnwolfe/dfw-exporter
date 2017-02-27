@@ -56,6 +56,6 @@ An example of the CSV out can be retrieved from [example.csv](example.csv).
  23,1020,Outside-MGT-RDP,allow,inout,MGT_IP-SET,"10.202.0.0/16, 172.20.0.0/15",TenB_Outside_Group,Empty group.,any,,DISTRIBUTED_FIREWALL
  ```
  
- #### Visual Diff
+#### Visual Diff
 
  ![](http://imgur.com/Mx65ixb.jpg)
