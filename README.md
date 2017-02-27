@@ -9,7 +9,7 @@ A python script to execute to pull a CSV export of DFW policy. Primarily for con
 * All other modules should be included, but `json` and `csv` are also used.
 
 # Syntax
-The following syntax should be used to run the script.
+The following syntax is required to run the script.
 `dfw-export.py [target_file_name] [nsx_manager_ip_or_hostname] [nsx_username] [nsx_password]`
 Example: `./dfw-export.py fw-export nsx.datacenter.com admin P@ssw0rd!`
 
