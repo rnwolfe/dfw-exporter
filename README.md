@@ -1,12 +1,12 @@
 # DFW Export
 A python script to execute to pull a CSV export of DFW policy. Primarily for config management capability + diff capabilities.
 
-*Note*: I originally intended to use pyvmomi and NSXRAMLClient to get this accomplished. Unfortunately, given my desire to recurse down into objects used as sources, destinaations, and services, the returned data didn't include the needed IDs to easily query for the additional details I needed. So, in the end, I went ahead and just used a basic approach with requests and HTTP calls directly from the script.
+*Note*: I originally intended to use `pynsxv` and NSXRAMLClient to get this accomplished. Unfortunately, given my desire to recurse down into objects used as sources, destinations, and services, the returned data didn't include the needed IDs to easily query for the additional details I needed. So, in the end, I went ahead and just used a basic approach with requests and HTTP calls directly from the script.
 
 # Prerequisites
 * [Python 2.7](http://docs.python-guide.org/en/latest/starting/installation/)
 * [Requests: HTTP for Humans](http://docs.python-requests.org/en/master/user/install/)
-* All other modules should be included, but `json` and `csv` are also used.
+* All other modules should be included in python, but `json` and `csv` are also used.
 
 # Syntax
 The following syntax is required to run the script.
