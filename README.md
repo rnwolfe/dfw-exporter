@@ -37,4 +37,4 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 Of course, after you do this, you will need to use the same hostname/IP as is present in the CN of the server certificate.
 
 # Example of Output
-An example of the CSV out can be retrieved from example.csv.
+An example of the CSV out can be retrieved from [example.csv](example.csv).
