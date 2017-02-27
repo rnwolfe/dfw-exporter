@@ -1,43 +1,43 @@
 Order,Rule ID,Name,Action,Dir,Source,Source Contents,Destination,Destination Contents,Service,Service Contents,Applied To
-"Section:Rob Test, ID: 1028"
+"Section:Rob Test, ID: 1028",,,,,,,,,,,
 1,1072, SG with IPSet,allow,inout,any,,test-security-group-ipset,"10.0.0.0/8, 192.168.0.0/16, 172.16.0.0/12",test-service,AARP,DISTRIBUTED_FIREWALL
 2,1071,rule 1,allow,inout,any,,any,,any,,DISTRIBUTED_FIREWALL
-"Section:Quarantine Ruleset, ID: 1020"
+"Section:Quarantine Ruleset, ID: 1020",,,,,,,,,,,
 3,1063,Quarantine Rule,deny,inout,any,,Quarantine_Security_Group,Empty group.,any,,Quarantine_Security_Group
 4,1062, Quarantine Rule,deny,inout,Quarantine_Security_Group,Empty group.,any,,any,,Quarantine_Security_Group
-"Section:Edge-GW Ruleset, ID: 1024"
-"Section:DC1-DC2-UNI Ruleset, ID: 038f2db7-24d3-428b-ba04-1ceb8ad5e4f9"
+"Section:Edge-GW Ruleset, ID: 1024",,,,,,,,,,,
+"Section:DC1-DC2-UNI Ruleset, ID: 038f2db7-24d3-428b-ba04-1ceb8ad5e4f9",,,,,,,,,,,
 5,2147483652, DNAT-Outside-Access,allow,inout,any,,test-security-group-ipset,"2.2.2.2, 1.1.1.1",HTTP,TCP/80,TenB-M-APP-UNI
 6,2147483650,Apache-Tomcat-Access,allow,inout,Travel-vAPP-WEB-NET-UNI,192.168.2.0/24,Travel-vAPP-WEB-NET-UNI,192.168.2.0/24,ICMP Echo Reply,ICMP/echo-reply,TenB-M-APP-UNI
 7,2147483649,Tomcat-DB-Access,allow,inout,Travel-vAPP-DB-NET-UNI,192.168.3.0/24,Travel-vAPP-DB-NET-UNI,192.168.3.0/24,MySQL,TCP/3306,TenB-M-DB-UNI
 8,2147483653,Permit-External-DNS,allow,inout,Travel-vAPP-WEB-NET-UNI,192.168.2.0/24,192.168.1.1,,DNS-UDP,UDP/53,"TenB-M-APP-UNI, TenB-M-DB-UNI"
 9,2147483648,Default-Deny-Access-TenB-Travel-VAPP,deny,inout,any,,any,,any,,"TenB-M-APP-UNI, TenB-M-DB-UNI"
-"Section:F3-App-Sens-Micro-Segmentation, ID: 1013"
+"Section:F3-App-Sens-Micro-Segmentation, ID: 1013",,,,,,,,,,,
 10,1051, Non-Sens-SRV-Zone,allow,inout,Non-Sensitive_Svrs,Empty group.,Non-Sensitive_Svrs,Empty group.,any,,DISTRIBUTED_FIREWALL
 11,1050,__NONAME__,deny,inout,Non-Sensitive_Svrs,Empty group.,Sensitive_Svrs,"10.202.36.10, fe80::250:56ff:fe93:c363",any,,DISTRIBUTED_FIREWALL
 12,1049,Sens-SRV-Zone,allow,inout,Sensitive_Svrs,"10.202.36.10, fe80::250:56ff:fe93:c363",Sensitive_Svrs,"10.202.36.10, fe80::250:56ff:fe93:c363",any,,DISTRIBUTED_FIREWALL
 13,1048,__NONAME__,deny,inout,Sensitive_Svrs,"10.202.36.10, fe80::250:56ff:fe93:c363",Non-Sensitive_Svrs,Empty group.,any,,DISTRIBUTED_FIREWALL
-"Section:Identity FW Demo, ID: 1012"
+"Section:Identity FW Demo, ID: 1012",,,,,,,,,,,
 14,1045,NTK-Admin-Access,allow,inout,ITAdminUsers_Group,Empty group.,NTK_Admin_IP_SET,10.202.99.1,any,,DISTRIBUTED_FIREWALL
 15,1046,NTK-Admin-Domain-Access,allow,inout,ITAdminUsers_Group,Empty group.,MGT_IP-SET,"10.202.0.0/16, 172.20.0.0/15",any,,DISTRIBUTED_FIREWALL
 16,1044,NTK-Admin-Block-Internet,deny,inout,ITAdminUsers_Group,Empty group.,any,,any,,DISTRIBUTED_FIREWALL
 17,1043,Contractor-Domain-Access,allow,inout,ContractorUsers_Group,Empty group.,RFC1918,"10.0.0.0/8, 192.168.0.0/16, 172.16.0.0/12",any,,DISTRIBUTED_FIREWALL
 18,1042,Contractor-Block-Internet,deny,inout,ContractorUsers_Group,Empty group.,any,,any,,DISTRIBUTED_FIREWALL
 19,1041,Domain-User-Full-Access,allow,inout,DomainUsers_Group,Empty group.,any,,any,,DISTRIBUTED_FIREWALL
-"Section:TenA Compute Cluster Rules, ID: 1006"
+"Section:TenA Compute Cluster Rules, ID: 1006",,,,,,,,,,,
 20,1010,Block Dev->Prod,deny,inout,TenC_Dev_Group,Empty group.,TenC_Prod_Group,Empty group.,any,,"TenA_Dev_Group, TenA_Prod_Group"
 21,1009,Block-Prod->Dev,deny,inout,TenC_Prod_Group,Empty group.,TenC_Dev_Group,Empty group.,any,,"TenA_Dev_Group, TenA_Prod_Group"
 22,1047,Default-Permit,allow,inout,any,,any,,any,,"TenA_Dev_Group, TenA_Prod_Group"
-"Section:TenB Compute Cluster Rules, ID: 1005"
+"Section:TenB Compute Cluster Rules, ID: 1005",,,,,,,,,,,
 23,1020,Outside-MGT-RDP,allow,inout,MGT_IP-SET,"10.202.0.0/16, 172.20.0.0/15",TenB_Outside_Group,Empty group.,any,,DISTRIBUTED_FIREWALL
 24,1013, Block Dev->Prod,deny,inout,TenB_Dev_IP-SET,10.202.42.0/24,TenB_Prod_IP-SET,10.202.41.0/24,any,,DISTRIBUTED_FIREWALL
 25,1012,Block Prod->Dev,deny,inout,TenB_Prod_IP-SET,10.202.41.0/24,TenB_Dev_IP-SET,10.202.42.0/24,any,,DISTRIBUTED_FIREWALL
-"Section:Inter-Tenant Rules, ID: 1004"
+"Section:Inter-Tenant Rules, ID: 1004",,,,,,,,,,,
 26,1017,Block-TenA-TenB-Traffic,deny,inout,TenA_Security_Group,Empty group.,TenB_Security_Group,"fe80::a5e1:d066:a719:5282, 10.202.42.10, 10.202.44.10, fe80::c9d2:d8b7:3663:4f95",any,,DISTRIBUTED_FIREWALL
 27,1014,Block-TenB-TenA Traffic,deny,inout,TenB_Security_Group,"10.202.44.10, fe80::c9d2:d8b7:3663:4f95, fe80::a5e1:d066:a719:5282, 10.202.42.10",TenA_Security_Group,Empty group.,any,,DISTRIBUTED_FIREWALL
-"Section:test :: NSX Service Composer - Firewall, ID: 1026"
+"Section:test :: NSX Service Composer - Firewall, ID: 1026",,,,,,,,,,,
 28,1066,test,allow,inout,Palo-Test-Client,Empty group.,any,,any,,DISTRIBUTED_FIREWALL
-"Section:Default Section Layer3, ID: 1002"
+"Section:Default Section Layer3, ID: 1002",,,,,,,,,,,
 29,1004,Default Rule NDP,allow,inout,any,,any,,IPv6-ICMP Neighbor Advertisement,IPV6ICMP/neighbor-advertisement,DISTRIBUTED_FIREWALL
 30,1003,Default Rule DHCP,allow,inout,any,,any,,DHCP-Client,UDP/68,DISTRIBUTED_FIREWALL
 31,1002,Default Rule,allow,inout,any,,any,,any,,DISTRIBUTED_FIREWALL
