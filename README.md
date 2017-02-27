@@ -63,5 +63,8 @@ An example of the CSV out can be retrieved from [example.csv](example.csv).
  ```
  
 #### Visual Diff
+##### Small Changes
+![](https://imgur.com/Mx65ixb.png)
 
- ![](http://imgur.com/Mx65ixb.jpg)
+#### Larger Changes
+![](https://i.imgur.com/lqCYbqf.png)
