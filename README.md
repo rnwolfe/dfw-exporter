@@ -17,6 +17,7 @@ Example: `./dfw-export.py fw-export nsx.datacenter.com admin P@ssw0rd!`
 By default, Requests will want verify the server certificate. For distribution, I simply removed the need for SSL verification and surpressed the warnings issued by `urllib3`. This is to have a really easy "clone and go" capability. However, for production usage of this, you **absolutely should verify the server certificate**.
 
 In order to verify the server certificate, you should modify the following line.
+
 **From**
 ```python
 nsx.verify = False
@@ -36,5 +37,24 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 Of course, after you do this, you will need to use the same hostname/IP as is present in the CN of the server certificate.
 
-# Example of Output
+# Example
+### Example of CSV
 An example of the CSV out can be retrieved from [example.csv](example.csv).
+### Example of Diff
+#### git diff
+```diff
+@@ -25,8 +25,8 @@ Order,Rule ID,Name,Action,Dir,Source,Source Contents,Destination,Destination Con
+ 18,1042,Contractor-Block-Internet,deny,inout,ContractorUsers_Group,Empty group.,any,,any,,DISTRIBUTED_FIREWALL
+ 19,1041,Domain-User-Full-Access,allow,inout,DomainUsers_Group,Empty group.,any,,any,,DISTRIBUTED_FIREWALL
+ "Section:TenA Compute Cluster Rules, ID: 1006"
+-20,1010,Block Dev->Prod,deny,inout,TenA_Dev_Group,Empty group.,TenA_Prod_Group,Empty group.,any,,"TenA_Dev_Group, TenA_Prod_Group"
+-21,1009,Block-Prod->Dev,deny,inout,TenA_Prod_Group,Empty group.,TenA_Dev_Group,Empty group.,any,,"TenA_Dev_Group, TenA_Prod_Group"
++20,1010,Block Dev->Prod,deny,inout,TenC_Dev_Group,Empty group.,TenC_Prod_Group,Empty group.,any,,"TenA_Dev_Group, TenA_Prod_Group"^M
++21,1009,Block-Prod->Dev,deny,inout,TenC_Prod_Group,Empty group.,TenC_Dev_Group,Empty group.,any,,"TenA_Dev_Group, TenA_Prod_Group"^M
+ 22,1047,Default-Permit,allow,inout,any,,any,,any,,"TenA_Dev_Group, TenA_Prod_Group"
+ "Section:TenB Compute Cluster Rules, ID: 1005"
+ 23,1020,Outside-MGT-RDP,allow,inout,MGT_IP-SET,"10.202.0.0/16, 172.20.0.0/15",TenB_Outside_Group,Empty group.,any,,DISTRIBUTED_FIREWALL
+ ```
+ #### Visual Diff
+ 
+ ![Diff using GitHub Desktop](http://imgur.com/Mx65ixb)
