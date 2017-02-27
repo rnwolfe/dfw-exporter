@@ -8,7 +8,9 @@ A python script to execute to pull a CSV export of DFW policy. Primarily for con
 * [Requests: HTTP for Humans](http://docs.python-requests.org/en/master/user/install/)
 * All other modules should be included in python, but `json` and `csv` are also used.
 
-# Syntax
+# Usage
+The main intended usage is to run the script as a cron job daily, weekly, etc. in order to get a snapshot of the DFW policy for purposes of troubleshooting and archival. If something should go wrong with microsegmentation, you can do a diff between two points in time to determine changes.
+
 The following syntax is required to run the script.
 ```
 dfw-export.py [target_file_name] [nsx_manager_ip_or_hostname] [nsx_username] [nsx_password]
@@ -17,7 +19,6 @@ Example:
 ```
 ./dfw-export.py fw-export nsx.datacenter.com admin P@ssw0rd!
 ```
-
 # A note on SSL
 By default, Requests will want verify the server certificate. For distribution, I simply removed the need for SSL verification and surpressed the warnings issued by `urllib3`. This is to have a really easy "clone and go" capability. However, for production usage of this, you **absolutely should verify the server certificate**.
 
